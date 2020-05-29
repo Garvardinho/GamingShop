@@ -3,13 +3,13 @@
 
 void Warehouse::result()
 {
-	cout << "ÒÎÂÀÐ ÍÀÉÄÅÍ ÍÀ ÑÊËÀÄÅ" << endl;
+	cout << "Èãðà íà ñêëàäå" << endl;
 }
 
 Warehouse::Warehouse()
 {
-	filename = "Warehouse.txt";
-	cout << endl << "~~~~~~~~~ ÑÎÄÅÐÆÈÌÎÅ ÑÊËÀÄÀ ~~~~~~~~~" << endl << endl;
+	filename = "warehouse.txt";
+	cout << endl << "=====ÑÊËÀÄ=====" << endl << endl;
 	read_from_file(filename); //çàïîëíåíèå ìàññèâà ñ èãðàìè â áàçîâîì êëàññå
 }
 

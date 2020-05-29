@@ -8,6 +8,6 @@ protected:
 	void result();
 
 public:
-	Site(); //конструктор
+	Site();
 	string get_filename();
 };

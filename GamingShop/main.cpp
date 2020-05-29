@@ -9,24 +9,33 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Rus");
 
 	Сhain *chain;
-	Game *game;
 	Site *site;
 	Shop *shop;
 	Warehouse *warehouse;
+	string tmp;
+	int menu = 1;
 
-	int swtch1 = 1;
-	while (swtch1 != 0) 
+	while (menu != 0)
 	{
-		cout << endl << endl << "Выберите действие:" << endl <<
-			"|1| <-> Вывести все данные из всех источников" << endl <<
-			"|2| <-> Добавление элементов в базу" << endl <<
-			"|3| <-> Найти игру на сайте -> магазине -> складе" << endl <<
-			"|0| <-> Выход" << endl;
-		cin >> swtch1;
-		switch (swtch1)
+		while (true) // Вывод меню
+		{
+			cout << "Выберите действие:" << endl <<
+				"1. Вывести все игры из всех источников" << endl <<
+				"2. Добавление игр" << endl <<
+				"3. Найти определенную игру" << endl <<
+				"0. Выход" << endl;
+
+			getline(cin, tmp);
+			menu = atoi(tmp.c_str());
+			if (num_valid(tmp)) // Если пройдена проверка строки на число
+				if (menu >= 0 && menu <= 3) // Если год выпуска игры соответствует его нормальным границам
+					break;
+		}
+
+		switch (menu)
 		{
 		case 1: /*Вывести все данные на экран*/
 			chain = new Site;
@@ -34,26 +43,27 @@ int main()
 			chain = new Warehouse;
 			delete chain;
 			break;
+
 		case 2:
 			cout << "Выберите действие:" << endl <<
-				"|1| <-> Добавление игр на сайт" << endl <<
-				"|2| <-> Добавление игр в магазин" << endl <<
-				"|3| <-> Добавление игр на склад" << endl <<
-				"|0| <-> Отмена" << endl;
-			cin >> swtch1;
-			switch (swtch1)
+				"1. Добавить игру на сайт" << endl <<
+				"2. Добавить игру в магазин" << endl <<
+				"3. Добавить игру на склад" << endl <<
+				"0. Выход" << endl;
+			cin >> menu;
+			switch (menu)
 			{
-			case 1: /*Добавление игр на сайт*/
+			case 1: // Добавление игр на сайт
 				site = new Site;
 				site->add_to_file(site->get_filename());
 				delete site;
 				break;
-			case 2: /*Добавление игр в магазин*/
+			case 2: // Добавление игр в магазин
 				shop = new Shop;
 				shop->add_to_file(shop->get_filename());
 				delete shop;
 				break;
-			case 3: /*Добавление игр на склад*/
+			case 3: // Добавление игр на склад
 				warehouse = new Warehouse;
 				warehouse->add_to_file(warehouse->get_filename());
 				delete warehouse;
@@ -62,26 +72,18 @@ int main()
 				break;
 			}
 			break;
+
 		case 3:
-			std::cout << "OUTPUT:" << std::endl;
-			chain = new Site;  // низший уровень в цепи сайт->магазин->склад
+			chain = new Site;
 			chain->setNext(new Shop)->setNext(new Warehouse);
-
-			cout << endl << "Введите данные об игре для поиска " << endl;
-			game = new Game;
-			game->set_game();
-
-			chain->search(game);
-
-			delete game;
+			chain->search();
+			cout << endl << "Введите данные об игре для поиска: " << endl;
 			break;
-		case 0:
-			break;
+
 		default:
 			break;
 		}
 	}
 
-	system("pause");
 	return 0;
 }

@@ -3,13 +3,13 @@
 
 void Shop::result()
 {
-	cout << "ÒÎÂÀÐ ÍÀÉÄÅÍ Â ÌÀÃÀÇÈÍÅ" << endl;
+	cout << "Èãðà â ìàãàçèíå" << endl;
 }
 
 Shop::Shop()
 {
 	filename = "shop.txt";
-	cout << endl << "~~~~~~~~~ ÑÎÄÅÐÆÈÌÎÅ ÌÀÃÀÇÈÍÀ ~~~~~~~~~" << endl << endl;
+	cout << endl << "=====ÌÀÃÀÇÈÍ=====" << endl << endl;
 	read_from_file(filename); //çàïîëíåíèå ìàññèâà ñ èãðàìè â áàçîâîì êëàññå
 }
 

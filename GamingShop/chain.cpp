@@ -6,19 +6,16 @@
 {
 	next = nullptr;
 	game_list = nullptr;
-	size_of_game_list = NULL;
+	game_list_size = 0;
 }
 
 Сhain::~Сhain()
 {
 	if (game_list)
-	{
 		delete[] game_list;
-	}
+
 	if (next)
-	{
 		delete next;
-	}
 }
 
 Сhain *Сhain::setNext(Сhain *сhain)
@@ -27,32 +24,50 @@
 	return next;
 }
 
-void Сhain::search(Game *game)
+int Сhain::search()
 {
-	bool flag = false;
-	for (int i = 0; i < size_of_game_list; i++)
+	if (game_list_size == 0)
 	{
-		if (!strcmp(game_list[i].name, game->name) && !strcmp(game_list[i].platform, game->platform) && (game_list[i].quantity >= game->quantity))
-		{
-			flag = true;
-		}
+		cout << "Игры отсутствуют!" << endl;
+		getchar();
+		return -1;
 	}
+
+	bool flag = false;
+	string name, platform;
+
+	do
+	{
+		cout << "Введите название: " << endl;
+		getline(cin, name);
+	} while (!str_valid(name));
+
+	while (true)
+	{
+		cout << "Введите игровую платформу: ";
+		getline(cin, platform);
+
+		if (platform == "PC" || platform == "Xbox" || platform == "PS")
+			break;
+	}
+
+	for (int i = 0; i < game_list_size; i++)
+		if (game_list[i].name == name && game_list[i].platform == platform) // Поиск по названию и платформе
+			flag = true;
 
 	if (flag)
 	{
 		result();
-		return;
+		return 0;
 	}
 	else
 	{
 		if (next)
-		{
-			next->search(game);
-		}
+			next->search();
 		else
 		{
 			cout << "Игра нигде не была найдена." << endl;
-			return;
+			return -1;
 		}
 	}
 }
@@ -60,12 +75,10 @@ void Сhain::search(Game *game)
 void Сhain::add_to_file(string file)
 {
 	int add_value; //сколько игр хотим добавить
-	read_from_file(file);
 
 	cout << "Сколько игр вы хотите добавить в базу? " << endl;
 	cin >> add_value;
-	size_of_game_list += add_value;
-
+	game_list_size += add_value;
 	write_to_file(file, add_value);
 }
 
@@ -76,27 +89,24 @@ void Сhain::write_to_file(string file, int add_val)
 	try
 	{
 		out.open(file, ios::out);
-		if (!out.is_open()) {
-			throw 505;
-		}
+		if (!out.is_open())
+			throw exception("Файл не может быть открыт!");
 
-		out.write(reinterpret_cast<char*>(&size_of_game_list), sizeof(int));
+		out.write(reinterpret_cast<char*>(&game_list_size), sizeof(int));
 
-		for (int i = 0; i < size_of_game_list - add_val; i++)
-		{
-			out.write(reinterpret_cast<char*>(&game_list[i]), sizeof(Game)); //перезаписываем содержимое gamelist
-		}
+		for (int i = 0; i < game_list_size - add_val; i++)
+			out.write(reinterpret_cast<char*>(&game_list[i]), sizeof(Game)); // Перезаписываем содержимое gamelist
 
 		for (int i = 0; i < add_val; i++)
 		{
 			tmp.set_game();
-			out.write(reinterpret_cast<char*>(&tmp), sizeof(Game)); //добавляем новые данные
+			out.write(reinterpret_cast<char*>(&tmp), sizeof(Game)); // Добавляем новые данные
 		}
 		out.close();
 	}
-	catch (const int &ex)
+	catch (exception &ex)
 	{
-		cout << "Ошибка открытия файла!" << endl << "Код ошибки: #" << ex << endl;
+		cout << ex.what() << endl;
 	}
 }
 
@@ -107,27 +117,22 @@ void Сhain::read_from_file(string file)
 	{
 		in.open(file, ios::in);
 		if (!in.is_open())
-		{
-			throw 505;
-		}
-		else
-		{
-			if (in.peek() == EOF)
-			{
-				throw 510;
-			}
-		}
-		in.read(reinterpret_cast<char*>(&size_of_game_list), sizeof(int));
-		game_list = new Game[size_of_game_list];
-		for (int i = 0; i < size_of_game_list; i++)
+			throw exception("Файл не может быть открыт!");
+
+		if (in.peek() == EOF)
+			throw exception("Файл пуст!");
+
+		in.read(reinterpret_cast<char*>(&game_list_size), sizeof(int));
+		game_list = new Game[game_list_size];
+		for (int i = 0; i < game_list_size; i++)
 		{
 			in.read(reinterpret_cast<char*>(&game_list[i]), sizeof(Game));
 			game_list[i].show_game();
 		}
 		in.close();
 	}
-	catch (const int &ex)
+	catch (exception &ex)
 	{
-		cout << "Ошибка работы файла!" << endl << "Код ошибки: #" << ex << endl;
+		cout << ex.what() << endl;
 	}
 }

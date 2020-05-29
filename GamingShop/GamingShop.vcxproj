@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="chain.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="header.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shop.cpp" />
     <ClCompile Include="site.cpp" />

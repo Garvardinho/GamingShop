@@ -5,47 +5,70 @@ using namespace std;
 
 Game::Game()
 {
-	name[0] = EOF;
-	genre[0] = EOF;
 	year = 0;
-	platform[0] = EOF;
-	sys_req[0] = EOF;
-	developer[0] = EOF;
 	quantity = 0;
 }
 
-Game::Game(char *name1, char *genre1, int year1, char *platform1, char *sys_req1, char *developer1, int quantity1)
+void Game::set_game()
 {
-	strcpy_s(name, name1);
-	strcpy_s(genre, genre1);
-	year = year1;
-	strcpy_s(platform, platform1);
-	strcpy_s(sys_req, sys_req1);
-	strcpy_s(developer, developer1);
-	quantity = quantity1;
+	string tmp;
+
+	do // Так как здесь вполне может быть больше одного слова, следует ввести проверку на пустую строку
+	{
+		cout << "Введите название: " << endl;
+		getline(cin, name);
+	} while (!str_valid(name)); // Здесь и далее - проверка на пустую строку (пробелы == пустая строка)
+
+	do
+	{
+		cout << "Введите жанр: " << endl;
+		getline(cin, genre);
+	} while (!str_valid(genre));
+
+	while (true)
+	{
+		cout << "Введите год выпуска: ";
+		getline(cin, tmp);
+		year = atoi(tmp.c_str());
+		if (num_valid(tmp)) // Если пройдена проверка строки на число
+			if (year >= 1980 && year <= 2020) // Если год выпуска игры соответствует его нормальным границам
+				break;
+	}
+
+	while (true)
+	{
+		cout << "Введите игровую платформу: ";
+		getline(cin, platform);
+
+		if (platform == "PC" || platform == "Xbox" || platform == "PS")
+			break;
+	}
+
+	do
+	{
+		cout << "Введите системные требования: ";
+		getline(cin, sys_req);
+	} while (!str_valid(sys_req));
+	
+	do
+	{
+		cout << "Введите разработчика: ";
+		getline(cin, developer);
+	} while (!str_valid(developer));
+
+	while (true)
+	{
+		cout << "Введите количество: ";
+		getline(cin, tmp);
+		year = atoi(tmp.c_str());
+		if (num_valid(tmp))
+			break;
+	}
 }
 
-void Game::set_game(void)
+void Game::show_game()
 {
-	cout << "Введите название: " << endl;
-	cin >> name;
-	cout << "Введите жанр: " << endl;
-	cin >> genre;
-	cout << "Введите год выпуска: " << endl;
-	cin >> year;
-	cout << "Введите игровую платформу: " << endl;
-	cin >> platform;
-	cout << "Введите системные требования: " << endl;
-	cin >> sys_req;
-	cout << "Введите разработчика: " << endl;
-	cin >> developer;
-	cout << "Введите количество: " << endl;
-	cin >> quantity;
-}
-
-void Game::show_game(void)
-{
-	cout << "Название игры: " << name << "; Жанр игры: " << genre << "; Год выпуска "
-		<< year << "; Игровая платформа " << platform << "; Cистемные требования " << sys_req << endl;
-	cout << "; Разработчик " << developer << "; Количество " << quantity << ";" << endl;
+	cout << "Название игры: " << name << "\nЖанр игры: " << genre << "\nГод выпуска: "
+		<< year << "\nИгровая платформа: " << platform << "\nCистемные требования: " << sys_req
+		<< "\nРазработчик: " << developer << "\nКоличество: " << quantity << endl << endl;
 }

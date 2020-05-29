@@ -5,13 +5,13 @@ using namespace std;
 
 void Site::result()
 {
-	cout << "ÒÎÂÀÐ ÍÀÉÄÅÍ ÍÀ ÑÀÉÒÅ" << endl;
+	cout << "Èãðà íà ñàéòå" << endl;
 }
 
 Site::Site()
 {
 	filename = "site.txt";
-	cout << endl << "~~~~~~~~~ ÑÎÄÅÐÆÈÌÎÅ ÑÀÉÒÀ ~~~~~~~~~" << endl << endl;
+	cout << endl << "=====ÑÀÉÒ=====" << endl << endl;
 	read_from_file(filename); //çàïîëíåíèå ìàññèâà ñ èãðàìè â áàçîâîì êëàññå
 }
 
