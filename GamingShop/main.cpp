@@ -9,24 +9,23 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Rus");
-
 	Сhain *chain;
 	Site *site;
 	Shop *shop;
 	Warehouse *warehouse;
 	string tmp;
 	int menu = 1;
+	int search_res;
 
 	while (menu != 0)
 	{
 		while (true) // Вывод меню
 		{
-			cout << "Выберите действие:" << endl <<
-				"1. Вывести все игры из всех источников" << endl <<
-				"2. Добавление игр" << endl <<
-				"3. Найти определенную игру" << endl <<
-				"0. Выход" << endl;
+			cout << "Select menu item:" << endl <<
+				"1. Show all games from all sources" << endl <<
+				"2. Add game" << endl <<
+				"3. Find the game" << endl <<
+				"0. Exit" << endl;
 
 			getline(cin, tmp);
 			menu = atoi(tmp.c_str());
@@ -45,27 +44,27 @@ int main()
 			break;
 
 		case 2:
-			cout << "Выберите действие:" << endl <<
-				"1. Добавить игру на сайт" << endl <<
-				"2. Добавить игру в магазин" << endl <<
-				"3. Добавить игру на склад" << endl <<
-				"0. Выход" << endl;
+			cout << "Select menu item:" << endl <<
+				"1. Add the game to the site" << endl <<
+				"2. Add the game to the shop" << endl <<
+				"3. Add the game to the warehouse" << endl <<
+				"0. Exit" << endl;
 			cin >> menu;
 			switch (menu)
 			{
 			case 1: // Добавление игр на сайт
 				site = new Site;
-				site->add_to_file(site->get_filename());
+				site->write_to_file(site->get_filename());
 				delete site;
 				break;
 			case 2: // Добавление игр в магазин
 				shop = new Shop;
-				shop->add_to_file(shop->get_filename());
+				shop->write_to_file(shop->get_filename());
 				delete shop;
 				break;
 			case 3: // Добавление игр на склад
 				warehouse = new Warehouse;
-				warehouse->add_to_file(warehouse->get_filename());
+				warehouse->write_to_file(warehouse->get_filename());
 				delete warehouse;
 				break;
 			default:
@@ -76,8 +75,10 @@ int main()
 		case 3:
 			chain = new Site;
 			chain->setNext(new Shop)->setNext(new Warehouse);
-			chain->search();
-			cout << endl << "Введите данные об игре для поиска: " << endl;
+			search_res = chain->search();
+			if (search_res != -1)
+				cout << endl << "Data to search: " << endl;
+
 			break;
 
 		default:

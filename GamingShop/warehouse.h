@@ -5,9 +5,9 @@ class Warehouse : public Сhain
 {
 protected:
 	string filename;
-	void result();
+	void result() override;
 
 public:
-	Warehouse(); //конструктор
+	Warehouse();
 	string get_filename();
 };

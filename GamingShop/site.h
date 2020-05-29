@@ -5,7 +5,7 @@ class Site : public Ñhain
 {
 protected:
 	string filename;
-	void result();
+	void result() override;
 
 public:
 	Site();

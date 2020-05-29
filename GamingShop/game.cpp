@@ -15,19 +15,19 @@ void Game::set_game()
 
 	do // Так как здесь вполне может быть больше одного слова, следует ввести проверку на пустую строку
 	{
-		cout << "Введите название: " << endl;
-		getline(cin, name);
-	} while (!str_valid(name)); // Здесь и далее - проверка на пустую строку (пробелы == пустая строка)
+		cout << "Title: " << endl;
+		getline(cin, title);
+	} while (!str_valid(title)); // Здесь и далее - проверка на пустую строку (пробелы == пустая строка)
 
 	do
 	{
-		cout << "Введите жанр: " << endl;
+		cout << "Genre: " << endl;
 		getline(cin, genre);
 	} while (!str_valid(genre));
 
 	while (true)
 	{
-		cout << "Введите год выпуска: ";
+		cout << "Year: ";
 		getline(cin, tmp);
 		year = atoi(tmp.c_str());
 		if (num_valid(tmp)) // Если пройдена проверка строки на число
@@ -37,7 +37,7 @@ void Game::set_game()
 
 	while (true)
 	{
-		cout << "Введите игровую платформу: ";
+		cout << "Gaming platform: ";
 		getline(cin, platform);
 
 		if (platform == "PC" || platform == "Xbox" || platform == "PS")
@@ -46,21 +46,21 @@ void Game::set_game()
 
 	do
 	{
-		cout << "Введите системные требования: ";
+		cout << "System requirments: ";
 		getline(cin, sys_req);
 	} while (!str_valid(sys_req));
 	
 	do
 	{
-		cout << "Введите разработчика: ";
+		cout << "Developer: ";
 		getline(cin, developer);
 	} while (!str_valid(developer));
 
 	while (true)
 	{
-		cout << "Введите количество: ";
+		cout << "Quantity: ";
 		getline(cin, tmp);
-		year = atoi(tmp.c_str());
+		quantity = atoi(tmp.c_str());
 		if (num_valid(tmp))
 			break;
 	}
@@ -68,7 +68,7 @@ void Game::set_game()
 
 void Game::show_game()
 {
-	cout << "Название игры: " << name << "\nЖанр игры: " << genre << "\nГод выпуска: "
-		<< year << "\nИгровая платформа: " << platform << "\nCистемные требования: " << sys_req
-		<< "\nРазработчик: " << developer << "\nКоличество: " << quantity << endl << endl;
+	cout << "Title: " << title << "\nGenre: " << genre << "\nYear: "
+		<< year << "\nGaming platform: " << platform << "\nSystem requirements: " << sys_req
+		<< "\nDeveloper: " << developer << "\nQuantity: " << quantity << endl << endl;
 }

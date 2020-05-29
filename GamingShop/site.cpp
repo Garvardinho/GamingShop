@@ -5,14 +5,14 @@ using namespace std;
 
 void Site::result()
 {
-	cout << "Игра на сайте" << endl;
+	cout << endl << "==The game is on the site==" << endl;
 }
 
 Site::Site()
 {
 	filename = "site.txt";
-	cout << endl << "=====САЙТ=====" << endl << endl;
-	read_from_file(filename); //заполнение массива с играми в базовом классе
+	cout << endl << "=====SITE=====" << endl << endl;
+	read_from_file(filename);
 }
 
 string Site::get_filename()

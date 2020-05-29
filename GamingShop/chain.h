@@ -16,7 +16,6 @@ public:
 
 	Ñhain* setNext(Ñhain* ñhain);
 	int search();
-	void add_to_file(string file);
-	void write_to_file(string file, int add_val);
+	void write_to_file(string file);
 	void read_from_file(string file);
 };

@@ -3,14 +3,14 @@
 
 void Shop::result()
 {
-	cout << "»гра в магазине" << endl;
+	cout << endl << "==The game is in the shop==" << endl;
 }
 
 Shop::Shop()
 {
 	filename = "shop.txt";
-	cout << endl << "=====ћј√ј«»Ќ=====" << endl << endl;
-	read_from_file(filename); //заполнение массива с играми в базовом классе
+	cout << endl << "=====SHOP=====" << endl << endl;
+	read_from_file(filename);
 }
 
 string Shop::get_filename()

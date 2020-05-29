@@ -4,7 +4,7 @@ class Game
 {
 private:
 	friend class Сhain;
-	string name;			//название
+	string title;			//название
 	string genre;			//жанр
 	int year;				//год выпуска
 	string platform;		//платформа (ПК, Xbox, PS)

@@ -3,14 +3,14 @@
 
 void Warehouse::result()
 {
-	cout << "Игра на складе" << endl;
+	cout << endl << "==The game is in the warehouse==" << endl;
 }
 
 Warehouse::Warehouse()
 {
 	filename = "warehouse.txt";
-	cout << endl << "=====СКЛАД=====" << endl << endl;
-	read_from_file(filename); //заполнение массива с играми в базовом классе
+	cout << endl << "=====WAREHOUSE=====" << endl << endl;
+	read_from_file(filename);
 }
 
 string Warehouse::get_filename() 
