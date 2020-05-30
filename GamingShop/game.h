@@ -14,6 +14,6 @@ private:
 
 public:
 	Game();
+	~Game();
 	void set_game();
-	void show_game();
 };

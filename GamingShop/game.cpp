@@ -3,11 +3,9 @@
 
 using namespace std;
 
-Game::Game()
-{
-	year = 0;
-	quantity = 0;
-}
+Game::Game() {}
+
+Game::~Game() {}
 
 void Game::set_game()
 {
@@ -65,11 +63,4 @@ void Game::set_game()
 			if (quantity > 0)
 				break;
 	}
-}
-
-void Game::show_game()
-{
-	cout << "Title: " << title << "\nGenre: " << genre << "\nYear: "
-		<< year << "\nGaming platform: " << platform << "\nSystem requirements: " << sys_req
-		<< "\nDeveloper: " << developer << "\nQuantity: " << quantity << endl << endl;
 }
