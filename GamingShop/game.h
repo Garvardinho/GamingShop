@@ -4,13 +4,13 @@ class Game
 {
 private:
 	friend class Сhain;
-	string title;			//название
-	string genre;			//жанр
-	int year;				//год выпуска
-	string platform;		//платформа (ПК, Xbox, PS)
-	string sys_req;			//системные требования
-	string developer;		//разработчик
-	int quantity;			//количество
+	string title;
+	string genre;
+	int year;
+	string platform;
+	string sys_req;
+	string developer;
+	int quantity;
 
 public:
 	Game();

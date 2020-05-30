@@ -5,7 +5,7 @@ using namespace std;
 
 void Site::result()
 {
-	cout << endl << "==The game is on the site==" << endl;
+	cout << endl << "==The game is on the site==" << endl << endl;
 }
 
 Site::Site()

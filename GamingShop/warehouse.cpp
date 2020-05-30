@@ -3,7 +3,7 @@
 
 void Warehouse::result()
 {
-	cout << endl << "==The game is in the warehouse==" << endl;
+	cout << endl << "==The game is in the warehouse==" << endl << endl;
 }
 
 Warehouse::Warehouse()

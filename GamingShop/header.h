@@ -3,6 +3,7 @@
 #include <exception>
 #include <fstream>
 #include <string>
+#include <list>
 #include <stdlib.h>
 using namespace std;
 

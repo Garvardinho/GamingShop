@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "chain.h"
 
 class Shop : public Ñhain
@@ -9,7 +8,6 @@ protected:
 	void result() override;
 
 public:
-
 	Shop();
 	std::string get_filename();
 };

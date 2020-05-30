@@ -3,7 +3,7 @@
 
 void Shop::result()
 {
-	cout << endl << "==The game is in the shop==" << endl;
+	cout << endl << "==The game is in the shop==" << endl << endl;
 }
 
 Shop::Shop()

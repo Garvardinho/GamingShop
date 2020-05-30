@@ -13,15 +13,15 @@ void Game::set_game()
 {
 	string tmp;
 
-	do // Так как здесь вполне может быть больше одного слова, следует ввести проверку на пустую строку
+	do // Check for an empty string
 	{
-		cout << "Title: " << endl;
+		cout << "Title: ";
 		getline(cin, title);
-	} while (!str_valid(title)); // Здесь и далее - проверка на пустую строку (пробелы == пустая строка)
+	} while (!str_valid(title)); // Spaces are equal to empty string
 
 	do
 	{
-		cout << "Genre: " << endl;
+		cout << "Genre: ";
 		getline(cin, genre);
 	} while (!str_valid(genre));
 
@@ -30,8 +30,8 @@ void Game::set_game()
 		cout << "Year: ";
 		getline(cin, tmp);
 		year = atoi(tmp.c_str());
-		if (num_valid(tmp)) // Если пройдена проверка строки на число
-			if (year >= 1980 && year <= 2020) // Если год выпуска игры соответствует его нормальным границам
+		if (num_valid(tmp)) // If the check for the number is passed
+			if (year >= 1980 && year <= 2020) // If the year corresponds to real scopes
 				break;
 	}
 
@@ -62,7 +62,8 @@ void Game::set_game()
 		getline(cin, tmp);
 		quantity = atoi(tmp.c_str());
 		if (num_valid(tmp))
-			break;
+			if (quantity > 0)
+				break;
 	}
 }
 
