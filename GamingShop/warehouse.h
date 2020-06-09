@@ -1,7 +1,7 @@
 #pragma once
 #include "Chain.h"
 
-class Warehouse : public Ñhain 
+class Warehouse : public Chain 
 {
 protected:
 	string filename;

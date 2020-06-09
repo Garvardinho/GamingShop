@@ -2,24 +2,24 @@
 #include "chain.h"
 #include "game.h"
 
-Ñhain::Ñhain()
+Chain::Chain()
 {
 	next = nullptr;
 }
 
-Ñhain::~Ñhain()
+Chain::~Chain()
 {
 	if (next)
 		delete next;
 }
 
-Ñhain *Ñhain::setNext(Ñhain *ñhain)
+Chain *Chain::setNext(Chain *Chain)
 {
-	next = ñhain;
+	next = Chain;
 	return next;
 }
 
-int Ñhain::search(string title_s = "", string platform_s = "") // Search games by title and platform
+int Chain::search(string title_s = "", string platform_s = "") // Search games by title and platform
 {
 	bool flag = false;
 	string title, platform;
@@ -68,7 +68,7 @@ int Ñhain::search(string title_s = "", string platform_s = "") // Search games b
 	}
 }
 
-void Ñhain::write_to_file(string file)
+void Chain::write_to_file(string file)
 {
 	int add_val;
 	string tmp_str;
@@ -108,7 +108,7 @@ void Ñhain::write_to_file(string file)
 	}
 }
 
-void Ñhain::read_from_file(string file)
+void Chain::read_from_file(string file)
 {
 	ifstream in;
 	string tmp;

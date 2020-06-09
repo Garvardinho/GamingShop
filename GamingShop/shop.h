@@ -1,7 +1,7 @@
 #pragma once
 #include "chain.h"
 
-class Shop : public Ñhain
+class Shop : public Chain
 {
 protected:
 	std::string filename;

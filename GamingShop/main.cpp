@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-	Ñhain *chain;
+	Chain *chain;
 	Site *site;
 	Shop *shop;
 	Warehouse *warehouse;
